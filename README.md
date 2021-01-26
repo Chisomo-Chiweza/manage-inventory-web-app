@@ -1,2 +1,3 @@
-# manage-inventory-web-app
-Inventory Management system with laravel for the backend ;)
+# manage-inventory-web-app :computer:
+
+
