@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 
-Route::get('/home', function () {
-    return view('home.index');    
+Route::get('/', function () {
+       return view('welcome');
 });
