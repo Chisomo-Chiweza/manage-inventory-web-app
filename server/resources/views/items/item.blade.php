@@ -1,5 +1,17 @@
 @extends('layouts.userdashboard')
 
+@section('navigation')
+
+<li>
+    <a href="" class="p-6 text-lg">Home</a>
+</li>
+
+<li>
+    <a href="" class="p-6 text-lg">Item Management</a>
+</li>
+    
+@endsection
+
 @section('content')
 
 <div class="flex justify-center">
