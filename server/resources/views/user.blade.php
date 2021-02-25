@@ -1,4 +1,16 @@
-@extends('layouts.dashboard')
+@extends('layouts.userdashboard')
+
+@section('navigation')
+
+<li>
+    <a href="" class="p-6 text-lg font-semibold">Home</a>
+</li>
+
+<li>
+    <a href="" class="p-6 text-lg">Item Management</a>
+</li>
+    
+@endsection
 
 @section('content')
 
