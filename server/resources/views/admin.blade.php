@@ -97,7 +97,7 @@
 <div class="flex justify-between px-20">
 
     <div>
-        <button class="bg-green-500 hover:bg-green-700 text-white p-2 px-10 rounded font-medium w-full">Create user</button>
+        <button class="bg-green-500 hover:bg-green-700 text-white p-2 px-10 rounded font-medium w-full"><a href="{{ route('register') }}">Create user</a></button>
     </div>
 
     <div>

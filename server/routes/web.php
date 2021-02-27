@@ -1,34 +1,56 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Auth\AdminLogoutController;
 
+
+// Welcome routes
 Route::get('/', function () {
        return view('welcome');
 });
 
-Route::get('/welcomeadmin', function () {
-       return view('welcomeadmin');
-});
+// Admin login routes
+Route::get('/welcomeadmin', [AdminLoginController::class, 'index'])->name('adminlogin');
+Route::post('/welcomeadmin', [AdminLoginController::class, 'store']);
+Route::get('/admin', [AdminController::class, 'index'])
+->name('admin')
+->middleware('auth');
+Route::post('/adminlogout', [AdminLogoutController::class, 'store'])->name('adminlogout');
 
-Route::get('/user', function () {
-       return view('user');
-});
 
+// Register user routes
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+
+// Delete user routes
+
+
+// User login routes
+Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::post('/', [LoginController::class, 'store']);
+Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+Route::get('/user', [UserController::class, 'index'])->name('user');
+
+
+// Dashboard routes
+// Transaction routes
+// Inventory routes
+// Item routes
+
+
+// Test Routes
 Route::get('/inventory', function () {
        return view('inventory');
 });
 
-Route::get('/admin', function () {
-       return view('admin');
-});
-
 Route::get('/transaction', function () {
        return view('popups/transaction');
-});
-
-Route::get('/register', function () {
-       return view('popups/register');
 });
 
 Route::get('/delete', function () {

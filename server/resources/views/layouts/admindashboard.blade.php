@@ -14,15 +14,23 @@
     <body class="bg-gray-200">
 
         <nav class="p-6 bg-white flex justify-between">
-
+           
             <ul class="flex items-center">
 
+                @auth
                 <li>
-                    <a href="" class="p-6 text-lg">Admin</a>
+                    <a href="" class="p-6 text-lg">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }}</a>
+                </li>
+                @endauth
+                <li>
+                    <a href="{{ route('admin') }}" class="p-6 text-lg">Home</a>
                 </li>
 
                 <li>
-                    <a href="" class="p-6 text-lg text-gray-500">Logout</a>
+                    <form action="{{ route('adminlogout') }}" method="post" class="inline p-3 text-lg text-gray-500">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
                 </li>
 
             </ul>
