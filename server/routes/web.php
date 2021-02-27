@@ -9,10 +9,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\AdminLogoutController;
 
-<<<<<<< HEAD
-Route::get('/home', function () {
-    return view('home.index');    
-=======
 
 // Welcome routes
 Route::get('/', function () {
@@ -63,5 +59,4 @@ Route::get('/delete', function () {
 
 Route::get('/item', function () {
        return view('items/item');
->>>>>>> Authentication
 });
