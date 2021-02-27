@@ -5,17 +5,17 @@
 <div class="flex justify-center pt-40">
 
     <div class="w-4/12 bg-white p-6 rounded-lg">
-
+        
         @if (session()->has('status'))
             <div class="bg-red-500 p-4 rounded-md mb-6 text-white text-center">
                 {{ session('status') }}
             </div>
         @endif
+        
+        <h1 class="text-xl text-center">Welcome administrator</h1>
+        <h3 class=" mt-2 mb-6 text-gray-500 text-lg text-center">Please sign in using your assigned credentials</h3>
 
-        <h1 class="text-xl text-center">Welcome to the Inventory Management System</h1>
-        <h3 class=" mt-2 mb-6 text-gray-500 text-lg text-center">Please sign in</h3>
-
-        <form action="{{ route('login') }}" method="post">
+        <form action="{{ route('adminlogin') }}" method="post">
             @csrf
 
             <div class="mb-4">
@@ -35,7 +35,7 @@
             @error('password')
                 <div class="text-red-500 text-sm">{{ $message }}</div>
             @enderror
-    
+
             <div>
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-3 rounded font-medium w-full">Login</button>
             </div>
@@ -43,7 +43,6 @@
         </form>
 
     </div>
-
 </div>
     
 @endsection
