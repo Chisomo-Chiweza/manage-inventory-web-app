@@ -31,7 +31,7 @@
 
             <div class="mb-4">
                 <label for="username" class="sr-only">username</label>
-                <input type="text" name="username" id="item" placeholder="Enter username ie firstnamelastname" class="bg-gray-100 border-2 w-full rounded-lg p-3 @error('username') border-red-500 @enderror" value="{{ old('username') }}">
+                <input type="text" name="username" id="username" placeholder="Enter username ie firstnamelastname" class="bg-gray-100 border-2 w-full rounded-lg p-3 @error('username') border-red-500 @enderror" value="{{ old('username') }}">
             </div>
 
             @error('username')
@@ -55,6 +55,11 @@
             @error('password_confirmation')
                 <div class="text-red-500 text-sm">{{ $message }}</div>
             @enderror
+
+            <div class="mb-4">
+                <input type="checkbox" name="admin" id="admin" class="text-gray-500" value="yes">
+                <label for="admin" class="text-gray-500 p-2">Make user admin</label>
+            </div>
 
             <div>
                 <button type="submit" class="bg-green-500 hover:bg-green-700 text-white px-4 py-3 rounded font-medium w-full">Add user</button>

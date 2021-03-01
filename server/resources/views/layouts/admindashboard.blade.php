@@ -19,7 +19,7 @@
 
                 @auth
                 <li>
-                    <a href="" class="p-6 text-lg">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }}</a>
+                    <a href="" class="p-6 text-lg">Administrator {{ auth()->user()->firstname }} {{ auth()->user()->lastname }}</a>
                 </li>
                 @endauth
                 <li>
@@ -27,7 +27,7 @@
                 </li>
 
                 <li>
-                    <form action="{{ route('adminlogout') }}" method="post" class="inline p-3 text-lg text-gray-500">
+                    <form action="{{ route('logout') }}" method="post" class="inline p-3 text-lg text-gray-500">
                         @csrf
                         <button type="submit">Logout</button>
                     </form>

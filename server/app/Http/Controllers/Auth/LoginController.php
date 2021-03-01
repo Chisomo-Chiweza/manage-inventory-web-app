@@ -24,6 +24,10 @@ class LoginController extends Controller
             return back()->with('status', 'Invalid login details');
         }
 
+        if (auth()->user()->admin == 1) {
+            return redirect()->route('admin');
+        }
+        
         // Redirect admin
         return redirect()->route('user');
 

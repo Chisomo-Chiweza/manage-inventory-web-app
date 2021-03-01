@@ -8,10 +8,10 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable;
 
     protected $table = 'users';
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'id';
 
 
     protected $fillable = [
@@ -19,12 +19,11 @@ class User extends Authenticatable
         'lastname',
         'username',
         'password',
+        'admin',
     ];
 
     protected $hidden = [
         'password',
     ];
-
-    public $timestamps = false;
     
 }
