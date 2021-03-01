@@ -15,7 +15,7 @@
                     <th class = "w-64 bg-blue-400 text-white">First Name</th>
                     <th class = "w-64 bg-blue-400 text-white">Last Name</th>
                     <th class = "w-64 bg-blue-400 text-white">Username</th>
-                    <th class = "w-64 bg-blue-400 text-white">Assigned Password</th>
+                    <th class = "w-64 bg-blue-400 text-white">Admin?</th>
                 </tr>
 
             </thead>
@@ -23,67 +23,18 @@
 
             {{-- Users --}}
             <tbody>
-
-                <tr>
-                    <td class="text-center border">Annabeth</td>
-                    <td class="text-center border">Peterson</td>
-                    <td class="text-center border">annabethpeterson</td>
-                    <td class="text-center border">1234</td>
-                </tr>
-                <tr>
-                    <td class="text-center border">Annabeth</td>
-                    <td class="text-center border">Peterson</td>
-                    <td class="text-center border">annabethpeterson</td>
-                    <td class="text-center border">1234</td>
-                </tr>
-                <tr>
-                    <td class="text-center border">Annabeth</td>
-                    <td class="text-center border">Peterson</td>
-                    <td class="text-center border">annabethpeterson</td>
-                    <td class="text-center border">1234</td>
-                </tr>
-                <tr>
-                    <td class="text-center border">Annabeth</td>
-                    <td class="text-center border">Peterson</td>
-                    <td class="text-center border">annabethpeterson</td>
-                    <td class="text-center border">1234</td>
-                </tr>
-                <tr>
-                    <td class="text-center border">Annabeth</td>
-                    <td class="text-center border">Peterson</td>
-                    <td class="text-center border">annabethpeterson</td>
-                    <td class="text-center border">1234</td>
-                </tr>
-                <tr>
-                    <td class="text-center border">Annabeth</td>
-                    <td class="text-center border">Peterson</td>
-                    <td class="text-center border">annabethpeterson</td>
-                    <td class="text-center border">1234</td>
-                </tr>
-                <tr>
-                    <td class="text-center border">Annabeth</td>
-                    <td class="text-center border">Peterson</td>
-                    <td class="text-center border">annabethpeterson</td>
-                    <td class="text-center border">1234</td>
-                </tr>
-                <tr>
-                    <td class="text-center border">Annabeth</td>
-                    <td class="text-center border">Peterson</td>
-                    <td class="text-center border">annabethpeterson</td>
-                    <td class="text-center border">1234</td>
-                </tr>
-                <tr>
-                    <td class="text-center border">Annabeth</td>
-                    <td class="text-center border">Peterson</td>
-                    <td class="text-center border">annabethpeterson</td>
-                    <td class="text-center border">1234</td>
-                </tr>
-                <tr>
-                    <td class="text-center border">Annabeth</td>
-                    <td class="text-center border">Peterson</td>
-                    <td class="text-center border">annabethpeterson</td>
-                    <td class="text-center border">1234</td>
-                </tr>
+                @if ($users->count())
+                    @foreach ($users as $user)
+                    <tr>
+                        <td class="text-center border">{{ $user->firstname }}</td>
+                        <td class="text-center border">{{ $user->lastname }}</td>
+                        <td class="text-center border">{{ $user->username }}</td>
+                        <td class="text-center border">{{ $user->admin }}</td>
+                    </tr>
+                    @endforeach    
+                @else
+                    <p class="text-center text-gray-500">There are no users registered</p>
+                @endif    
 
             </tbody>
             
@@ -101,7 +52,7 @@
     </div>
 
     <div>
-        <button class="bg-red-500 hover:bg-red-700 text-white p-2 px-10 rounded font-medium w-full">Delete user</button>
+        <button class="bg-red-500 hover:bg-red-700 text-white p-2 px-10 rounded font-medium w-full"><a href="{{ route('delete') }}">Delete user</a></button>
     </div>
 
 </div>
