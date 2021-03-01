@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\DeleteController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\AdminLogoutController;
@@ -32,6 +33,8 @@ Route::get('/user', [UserController::class, 'index'])->name('user');
 
 
 // Dashboard routes
+Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+Route::post('/transaction', [TransactionController::class, 'store']);
 // Transaction routes
 // Inventory routes
 // Item routes
@@ -41,11 +44,6 @@ Route::get('/user', [UserController::class, 'index'])->name('user');
 Route::get('/inventory', function () {
        return view('inventory');
 });
-
-Route::get('/transaction', function () {
-       return view('popups/transaction');
-});
-
 Route::get('/item', function () {
        return view('items/item');
 });

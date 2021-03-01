@@ -26,7 +26,7 @@
 <div class="flex justify-center">
 
     <div>
-        <button class="bg-green-500 hover:bg-green-700 text-white px-4 py-3 rounded font-medium w-full">Create transaction</button>
+        <button class="bg-green-500 hover:bg-green-700 text-white px-4 py-3 rounded font-medium w-full"><a href="{{ route('transaction') }}">Create transaction</a></button>
     </div>
 
 </div>
