@@ -26,12 +26,12 @@ class Inventory extends Model
 
     public function setNameAttribute($value)
     {
-        $this->attributes['name'] = strtolower($value);
+        $this->attributes['name'] = ($value);
     }
 
     public function setNumberOfItemsAttribute($value)
     {
-        $this->attributes['number_of_items'] = strtolower($value);
+        $this->attributes['number_of_items'] = ($value);
     }
 
 
