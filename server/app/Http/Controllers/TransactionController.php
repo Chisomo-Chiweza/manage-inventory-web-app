@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventory;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -26,7 +27,9 @@ class TransactionController extends Controller
             'quantity' => 'required'
         ]);
         
+        $user_input = (string) $request->item;
         $states = $request->user()->inventories()->get();
+        $check = $states->contains('name', $user_input);    
         $isempty = $states->isEmpty();
         
         if ($isempty) {
@@ -48,53 +51,43 @@ class TransactionController extends Controller
 
             return redirect()->route('user'); 
 
-        }
-
-        foreach ($states as $state) {
-
-            $check = (bool) ($state->name == $request->item);
-
+        } elseif (!$isempty) {
+            
             if ($check) {
 
-                $number = 1;
+            // Increment value
+            if ($request->type == 'deposit') {
+                $users = $request->user()->inventories()->where('name', $request->item)->get();
+                    foreach ($users as  $user) {
+                        $number = (int) $user->number_of_items;
+                        $number += (int) $request->quantity;
+                    }
+                //Update record
+                $request->user()->inventories()->where('name', $request->item)->update(['number_of_items' => $number]);
+            } 
+            
+            // Withdraw value
+            if ($request->type == 'withdrawal') {
+                $users = $request->user()->inventories()->where('name', $request->item)->get();
+                    foreach ($users as  $user) {
+                        $number = (int) $user->number_of_items;
+                        $number -= (int) $request->quantity;
+                    }
 
-                // Increment value
-                if ($request->type == 'deposit') {
-                    $users = $request->user()->inventories()->where('name', $request->item)->get();
-                        foreach ($users as  $user) {
-                            $number = (int) $user->number_of_items;
-                            $number += (int) $request->quantity;
-                        }
-                    //Update record
-                    $request->user()->inventories()->where('name', $request->item)->update(['number_of_items' => $number]);
-                } 
-                
-                // Withdraw value
-                if ($request->type == 'withdrawal') {
-                    $users = $request->user()->inventories()->where('name', $request->item)->get();
-                        foreach ($users as  $user) {
-                            $number = (int) $user->number_of_items;
-                            $number -= (int) $request->quantity;
-                        }
-
-                    //Update record
-                    $request->user()->inventories()->where('name', $request->item)->update(['number_of_items' => $number]);
-                }
-
-                // Store transaction
-                $request->user()->transactions()->create([
-                    'date' => $request->date,
-                    'initiated_by' => $request->initiator,
-                    'type_of_transaction' => $request->type,
-                    'item_name' => $request->item,
-                    'qty' => $request->quantity,
-                ]);
-
-                return redirect()->route('user'); 
-
+                //Update record
+                $request->user()->inventories()->where('name', $request->item)->update(['number_of_items' => $number]);
             }
-                        
-            if (!$check) {
+
+            // Store transaction
+            $request->user()->transactions()->create([
+                'date' => $request->date,
+                'initiated_by' => $request->initiator,
+                'type_of_transaction' => $request->type,
+                'item_name' => $request->item,
+                'qty' => $request->quantity,
+            ]);
+
+            } elseif (!$check) {
 
                 // Store item
                 $request->user()->inventories()->create([
@@ -111,9 +104,10 @@ class TransactionController extends Controller
                     'qty' => $request->quantity,
                 ]);
 
-                return redirect()->route('user'); 
             }
 
+            return redirect()->route('user'); 
+    
         }
 
     }
