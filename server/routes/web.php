@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\DeleteController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -35,15 +36,14 @@ Route::get('/user', [UserController::class, 'index'])->name('user');
 // Dashboard routes
 Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
 Route::post('/transaction', [TransactionController::class, 'store']);
-// Transaction routes
+
 // Inventory routes
+Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
+
 // Item routes
 
 
-// Test Routes
-Route::get('/inventory', function () {
-       return view('inventory');
-});
+// Test routes
 Route::get('/item', function () {
        return view('items/item');
 });

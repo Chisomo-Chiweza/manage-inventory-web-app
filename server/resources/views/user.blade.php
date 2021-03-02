@@ -3,11 +3,11 @@
 @section('navigation')
 
 <li>
-    <a href="" class="p-6 text-lg font-semibold">Home</a>
+    <a href="{{ route('user') }}" class="p-6 text-lg font-semibold">Home</a>
 </li>
 
 <li>
-    <a href="" class="p-6 text-lg">Item Management</a>
+    <a href="{{ route('inventory') }}" class="p-6 text-lg">Item Management</a>
 </li>
     
 @endsection
