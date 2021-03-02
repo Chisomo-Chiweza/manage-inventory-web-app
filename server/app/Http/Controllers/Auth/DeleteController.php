@@ -15,8 +15,6 @@ class DeleteController extends Controller
 
     public function store(Request $request) {
 
-        dd('deleted ma gee');
-
         // Validation
         $this->validate($request, [
             'firstname' => 'required|max:255',
@@ -25,9 +23,9 @@ class DeleteController extends Controller
             'password' => 'required',
         ]);
 
-       
-
-        
+        // Delete user
+        dd('deleted ma gee');
+    
     }
 
 }

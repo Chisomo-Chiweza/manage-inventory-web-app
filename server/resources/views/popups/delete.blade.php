@@ -13,13 +13,12 @@
 
             <div class="mb-4">
                 <label for="firstname" class="sr-only">firstname</label>
-                <input type="text" name="name" id="firstname" placeholder="Enter user's firstname" class="bg-gray-100 border-2 w-full rounded-lg p-3 @error('firstname') border-red-500 @enderror" value="{{ old('firstname') }}">
+                <input type="text" name="firstname" id="firstname" placeholder="Enter user's firstname" class="bg-gray-100 border-2 w-full rounded-lg p-3 @error('firstname') border-red-500 @enderror" value="{{ old('firstname') }}">
             </div>
-            
             @error('firstname')
                 <div class="text-red-500 text-sm">{{ $message }}</div>
             @enderror
-
+            
             <div class="mb-4">
                 <label for="lastname" class="sr-only">lastname</label>
                 <input type="text" name="lastname" id="lastname" placeholder="Enter user's lastname" class="bg-gray-100 border-2 w-full rounded-lg p-3 @error('lastname') border-red-500 @enderror" value="{{ old('lastname') }}">
