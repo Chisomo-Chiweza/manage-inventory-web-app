@@ -4,34 +4,27 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\DeleteController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\AdminLogoutController;
 
 
-// Welcome routes
-Route::get('/', function () {
-       return view('welcome');
-});
-
-// Admin login routes
-Route::get('/welcomeadmin', [AdminLoginController::class, 'index'])->name('adminlogin');
-Route::post('/welcomeadmin', [AdminLoginController::class, 'store']);
+// Admin
 Route::get('/admin', [AdminController::class, 'index'])
-->name('admin')
-->middleware('auth');
-Route::post('/adminlogout', [AdminLogoutController::class, 'store'])->name('adminlogout');
-
+->middleware('admin')
+->name('admin');
 
 // Register user routes
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
 // Delete user routes
+Route::get('/delete', [DeleteController::class, 'index'])->name('delete');
+Route::post('/delete', [DeleteController::class, 'store']);
 
-
-// User login routes
+// Login routes
 Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
@@ -51,10 +44,6 @@ Route::get('/inventory', function () {
 
 Route::get('/transaction', function () {
        return view('popups/transaction');
-});
-
-Route::get('/delete', function () {
-       return view('popups/delete');
 });
 
 Route::get('/item', function () {

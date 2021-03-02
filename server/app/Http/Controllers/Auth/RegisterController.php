@@ -30,6 +30,7 @@ class RegisterController extends Controller
             'lastname' => $request->lastname,
             'username' => $request->username,
             'password' => Hash::make($request->password),
+            'admin' => $request->admin,
         ]);
 
         // Redirect admin
