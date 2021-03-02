@@ -13,7 +13,6 @@ class AdminController extends Controller
     public function index(){
         
         $users = User::get();
-
         return view('admin')->with('users', $users);
     }
     

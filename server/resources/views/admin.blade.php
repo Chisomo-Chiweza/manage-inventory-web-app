@@ -29,7 +29,7 @@
                         <td class="text-center border">{{ $user->firstname }}</td>
                         <td class="text-center border">{{ $user->lastname }}</td>
                         <td class="text-center border">{{ $user->username }}</td>
-                        <td class="text-center border">{{ $user->admin }}</td>
+                        <td class="text-center border">{{ $user->admin ? 'Yes' : 'No' }}</td>
                     </tr>
                     @endforeach    
                 @else
