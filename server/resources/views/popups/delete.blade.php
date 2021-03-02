@@ -35,14 +35,6 @@
                 <div class="text-red-500 text-sm">{{ $message }}</div>
             @enderror
 
-            <div class="mb-4">
-                <label for="password" class="sr-only">password</label>
-                <input type="password" name="password" id="password" placeholder="Enter user password" class="bg-gray-100 border-2 w-full rounded-lg p-3 @error('password') border-red-500 @enderror" value="">
-            </div>
-            @error('password')
-                <div class="text-red-500 text-sm">{{ $message }}</div>
-            @enderror
-
             <div>
                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white px-4 py-3 rounded font-medium w-full">Remove user</button>
             </div>

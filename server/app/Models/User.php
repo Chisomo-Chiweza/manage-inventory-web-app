@@ -26,6 +26,28 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getLastNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getUserNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getPasswordAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    
+
     
     
 }

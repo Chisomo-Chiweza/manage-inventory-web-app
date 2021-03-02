@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DeleteController extends Controller
 
@@ -20,12 +21,18 @@ class DeleteController extends Controller
             'firstname' => 'required|max:255',
             'lastname' => 'required|max:255',
             'username' => 'required',
-            'password' => 'required',
         ]);
 
         // Delete user
-        dd('deleted ma gee');
-    
+        $input = $request->firstname;
+        $user_id = User::where('firstname', $input)->first()->id;
+        $user = User::find($user_id);
+        if ($user) {
+            $user->delete();
+        } 
+        
+        // Redirect user
+        return redirect()->route('admin');
     }
 
 }
