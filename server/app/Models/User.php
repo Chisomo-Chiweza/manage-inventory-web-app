@@ -26,28 +26,13 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function getFirstNameAttribute($value)
-    {
-        return ucfirst($value);
+    public function transactions() {
+        return $this->hasMany(Transaction::class);
     }
 
-    public function getLastNameAttribute($value)
-    {
-        return ucfirst($value);
+    public function inventories() {
+        return $this->hasMany(Inventory::class);
     }
-
-    public function getUserNameAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
-    public function getPasswordAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
-    
-
     
     
 }
