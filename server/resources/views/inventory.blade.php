@@ -23,11 +23,11 @@
 
 @empty($inventory)
 
-    <div class="bg-white flex justify-center p-10">
+<div class="p-10">
 
-        <p class="text-center text-xl text-gray-500">There are no items in your inventory</p>
+    <p class="text-center text-xl text-gray-500">There are no items in your inventory</p>
 
-    </div>
+</div>
         
 @endempty   
 

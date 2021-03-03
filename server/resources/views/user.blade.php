@@ -15,21 +15,19 @@
 @section('content')
 
 <div class="flex justify-center pt-10">
-
-    <div class="bg-white p-4 rounded-lg w-10/12 mb-10">
+    
+    <div class="bg-white p-4 rounded-lg w-10/12 mb-8">
 
         @empty($name)
-            <canvas id="canvas" height="100" width="300" class="text-xl text-gray-600">
-                You currently have no items in your inventory
-            </canvas>
+            <p class=" text-center text-base">You have no items in your inventory</p>    
         @endempty
-        
+
         <canvas id="canvas" height="100" width="300">
         
         </canvas>
         
-
     </div>
+
 </div>
 
 <div class="flex justify-center">
