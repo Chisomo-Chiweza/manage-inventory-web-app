@@ -15,6 +15,6 @@ class InventoryController extends Controller
             $inventory[] = $item;
         }
 
-        return view('inventory')->with('inventory', $inventory);
+        return view('inventory', compact("inventory"));
     }
 }
