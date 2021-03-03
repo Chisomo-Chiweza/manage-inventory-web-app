@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 class InventoryController extends Controller
 {
     public function index() {
-        return view('inventory');
+
+        $items = auth()->user()->inventories;
+        $inventory = [];
+
+        foreach ($items as $item) {
+            $inventory[] = $item;
+        }
+
+        return view('inventory', compact("inventory"));
     }
 }

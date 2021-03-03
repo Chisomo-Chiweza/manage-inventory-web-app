@@ -15,51 +15,37 @@
 
 @section('content')
 
-<div class="flex justify-center p-10">
+<div class="flex justify-center p-6">
 
-    <div>
-
-        <label for="search" class="sr-only">search</label>
-        <input type="text" name="search" id="search" placeholder="Search item" class="bg-white w-full rounded p-3 pr-40" value="">
-
-    </div>
-    
-</div>
-
-<div class="grid grid-cols-4 gap-4 p-3 px-10">
-
-    <div class="bg-white p-4 rounded-sm m-4">
-        <p class="text-gray-500 text-lg text-center">Item</p>
-    </div>
-
-    <div class="bg-white p-4 rounded-sm m-4">
-        <p class="text-gray-500 text-lg text-center">Item</p>
-    </div>
-
-    <div class="bg-white p-4 rounded-sm m-4">
-        <p class="text-gray-500 text-lg text-center">Item</p>
-    </div>
-
-    <div class="bg-white p-4 rounded-sm m-4">
-        <p class="text-gray-500 text-lg text-center">Item</p>
-    </div>
-
-
-    <div class="bg-white p-4 rounded-sm m-4">
-        <p class="text-gray-500 text-lg text-center">Item</p>
-    </div>
-
-    <div class="bg-white p-4 rounded-sm m-4">
-        <p class="text-gray-500 text-lg text-center">Item</p>
-    </div>
-
-    <div class="bg-white p-4 rounded-sm m-4">
-        <p class="text-gray-500 text-lg text-center">Item</p>
-    </div>
-
-    <div class="bg-white p-4 rounded-sm m-4">
-        <p class="text-gray-500 text-lg text-center">Item</p>
-    </div>
+    <h1 class="text-2xl text-center">Items in Stock</h1>
 
 </div>
+
+@empty($inventory)
+
+    <div class="bg-white flex justify-center p-10">
+
+        <p class="text-center text-xl text-gray-500">There are no items in your inventory</p>
+
+    </div>
+        
+@endempty   
+
+<div class="p-6 grid grid-cols-3 gap-6">
+
+    @foreach ($inventory as $item)
+
+        <div class="bg-white p-4 rounded-lg m-4 shadow-xl border-2 border-solid border-pink-500">
+
+            <h1 class="text-lg text-center">{{ $item->name }}</p>
+
+            <p class="text-lg text-center">{{ $item->number_of_items }} units in stock</p>
+
+        </div>
+
+    @endforeach
+            
+</div>      
+      
+   
 @endsection
